@@ -5,8 +5,8 @@ var textarea = document.getElementById("texter");
 var terminal = document.getElementById("terminal");
 
 var git = 0;
-//var pw = false;
-//let pwd = false;
+var pw = false;
+let pwd = false;
 var commands = [];
 
 setTimeout(function () {
@@ -16,14 +16,14 @@ setTimeout(function () {
 
 window.addEventListener("keyup", enterKey);
 
-/* console.log(
+/*console.log(
   "%cYou hacked my password!😠",
   "color: #04ff00; font-weight: bold; font-size: 24px;",
 );
 console.log(
   "%cPassword: '" + password + "' - I wonder what it does?🤔",
   "color: grey",
-); */
+);*/
 
 //init
 textarea.value = "";
