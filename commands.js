@@ -25,6 +25,8 @@ whoami = [
 social = [
   "<br>",
 
+  'blog          <a href="https://ianwatkins.dev" target="_blank"> ianwatkins.dev</a>',
+
   'linkedin       <a href="' +
     linkedin +
     '" target="_blank">linkedin/ian-watkins' +
