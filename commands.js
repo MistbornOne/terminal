@@ -53,6 +53,7 @@ help = [
   "<br>",
   '<span class="command">about</span>          Who is Ian?',
   '<span class="command">whoami</span>         Who are you?',
+  '<span class="command">jk</span>             Go Home',
   '<span class="command">social</span>         My socials',
   '<span class="command">projects</span>       My coding projects',
   '<span class="command">history</span>        View command history',
@@ -81,6 +82,12 @@ banner = [
   '<span class="color2">For a list of available commands, type</span> <span class="command">\'help\'</span><span class="color2">.</span>',
 ];
 
-games = ["<br>", "Games are coming soon...", "<br>"];
+games = [
+  "<br>",
+  "Available Games:",
+  "1. Hangman - Classic word-guessing game, with a nerdy twist.",
+  "2. ??? - Coming soon...",
+  "<br>",
+];
 
 story = ["<br>", "Stories are coming soon...", "<br>"];

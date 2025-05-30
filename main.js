@@ -1,3 +1,5 @@
+//import "./commands.js";
+
 var before = document.getElementById("before");
 var liner = document.getElementById("liner");
 var command = document.getElementById("typer");
@@ -7,6 +9,7 @@ var terminal = document.getElementById("terminal");
 var git = 0;
 var pw = false;
 let pwd = false;
+let activeGame = null;
 var commands = [];
 
 setTimeout(function () {
@@ -57,17 +60,30 @@ function enterKey(e) {
     }
   } else {
     if (e.keyCode == 13) {
-      commands.push(command.innerHTML);
+      const input = command.innerHTML;
+      commands.push(input);
       git = commands.length;
-      addLine(
-        "friend@ianwatkins.pro:~$ " + command.innerHTML,
-        "no-animation",
-        0,
-      );
-      commander(command.innerHTML.toLowerCase());
+
+      addLine("friend@ianwatkins.pro:~$ " + input, "no-animation", 0);
+
+      if (input === "jk") {
+        clearToBanner();
+        activeGame = null; // Reset active game
+        command.innerHTML = "";
+        textarea.value = "";
+        return;
+      }
+
+      if (activeGame && typeof activeGame.handleInput === "function") {
+        activeGame.handleInput(input.trim());
+      } else {
+        commander(input.toLowerCase());
+      }
+
       command.innerHTML = "";
       textarea.value = "";
     }
+
     if (e.keyCode == 38 && git != 0) {
       git -= 1;
       textarea.value = commands[git];
@@ -102,6 +118,9 @@ function commander(cmd) {
         window.open("https://www.youtube.com/watch?v=dQw4w9WgXcQ");
       }, 1000);
       break; */
+    case "jk":
+      clearToBanner();
+      break;
     case "social":
       loopLines(social, "color2 margin", 80);
       break;
@@ -159,7 +178,8 @@ function commander(cmd) {
       break;
 
     case "games":
-      loopLines(games, "color2 margin", 80);
+      //loopLines(games, "color2 margin", 80);
+      showGameMenu();
       break;
 
     case "story":
@@ -199,4 +219,64 @@ function loopLines(name, style, time) {
   name.forEach(function (item, index) {
     addLine(item, style, index * time);
   });
+}
+
+function showGameMenu() {
+  addLine("<br>", "", 0);
+  addLine("Available Games:", "color2", 0);
+  addLine("1. Hangman", "color2", 80);
+  addLine("2. ??? Coming Soon...", "color2", 160);
+
+  addLine(
+    "Type the number of the game to start or <span class=\"command\">'jk'</span> to exit.",
+    "color2",
+    160,
+  );
+  activeGame = {
+    handleInput: function (input) {
+      if (input === "jk") {
+        clearToBanner();
+        activeGame = null; // Reset active game
+        return;
+      }
+      if (input === "1") {
+        import("./games/hangman/index.js").then((mod) => {
+          //addLine("Starting Hangman...", "color2", 0);
+          mod.startHangman(setGameHandler, endGame);
+        });
+        //activeGame = null; // Reset to allow the game to take over
+      } else {
+        addLine("Invalid selection. Type 'games' to try again.", "error", 0);
+        activeGame = null;
+      }
+    },
+  };
+}
+
+function setGameHandler(handler) {
+  activeGame = handler;
+}
+
+function clearToBanner() {
+  const bannerHTML = terminal.innerHTML;
+  const bannerStart = bannerHTML.indexOf("██╗"); // start of your ASCII banner
+  if (bannerStart >= 0) {
+    const bannerLines = bannerHTML.substring(bannerStart);
+    terminal.innerHTML = `<a id="before"></a>`;
+    before = document.getElementById("before");
+    loopLines(banner, "", 0); // re-display banner
+  } else {
+    terminal.innerHTML = '<a id="before"></a>';
+    before = document.getElementById("before");
+    loopLines(banner, "", 0);
+  }
+}
+
+function endGame() {
+  activeGame = null;
+  addLine(
+    "Game over! Type 'games' to play again or enter another command.",
+    "color2",
+    0,
+  );
 }
