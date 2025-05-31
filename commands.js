@@ -18,7 +18,12 @@ about = [
 
 whoami = [
   "<br>",
-  "That is a good question friend... who are you indeed?",
+  "Today you are you, that is truer than true.",
+  "There is no one alive who is youer than you.",
+
+  "<br>",
+  "- Dr. Seuss",
+
   "<br>",
 ];
 

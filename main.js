@@ -1,5 +1,3 @@
-//import "./commands.js";
-
 var before = document.getElementById("before");
 var liner = document.getElementById("liner");
 var command = document.getElementById("typer");
@@ -18,15 +16,6 @@ setTimeout(function () {
 }, 100);
 
 window.addEventListener("keyup", enterKey);
-
-/*console.log(
-  "%cYou hacked my password!😠",
-  "color: #04ff00; font-weight: bold; font-size: 24px;",
-);
-console.log(
-  "%cPassword: '" + password + "' - I wonder what it does?🤔",
-  "color: grey",
-);*/
 
 //init
 textarea.value = "";
@@ -112,32 +101,18 @@ function commander(cmd) {
     case "whoami":
       loopLines(whoami, "color2 margin", 80);
       break;
-    /* case "sudo":
-      addLine("Oh no, you're not admin...", "color2", 80);
-      setTimeout(function () {
-        window.open("https://www.youtube.com/watch?v=dQw4w9WgXcQ");
-      }, 1000);
-      break; */
+
     case "jk":
       clearToBanner();
       break;
     case "social":
       loopLines(social, "color2 margin", 80);
       break;
-    /* case "secret":
-      liner.classList.add("password");
-      pw = true;
-      break; */
+
     case "projects":
       loopLines(projects, "color2 margin", 80);
       break;
-    /* case "password":
-      addLine(
-        "<span class=\"inherit\"> Lol! You're joking, right? You\'re gonna have to try harder than that!😂</span>",
-        "error",
-        100,
-      );
-      break;*/
+
     case "history":
       addLine("<br>", "", 0);
       loopLines(commands, "color2", 80);
