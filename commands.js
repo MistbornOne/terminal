@@ -69,7 +69,7 @@ help = [
   '<span class="command">clear</span>          Wipe the terminal',
   '<span class="command">banner</span>         Display the header',
   '<span class="command">games</span>          Play terminal games',
-  '<span class="command">story</span>          Be part of a story...',
+  '<span class="command">story</span>          Enter if you dare...',
   // '<span class="command">secret</span>         Find the password',
 
   "<br>",
@@ -97,4 +97,20 @@ games = [
   "<br>",
 ];
 
-story = ["<br>", "Stories are coming soon...", "<br>"];
+story = [
+  "<br>",
+  "After nourishment, shelter and companionship, stories are the thing we need most in the world.",
+  "<br>",
+  "- Philip Pullman",
+  "<br>",
+  "For my entire life I've been telling stories.",
+  "Some of my earliest memories are making up fairy tales of my own...",
+  "<br>",
+  "Over the last decade I've written many short stories and attempted several novels.",
+  "Until now, I've not shared these with the world...",
+  "<br>",
+  "My stories are available <a href='https://ianwatkinsfiction.netlify.app/' target='_blank'>here</a>.",
+  "If you happen to read and enjoy one, let me know.",
+  "Thank you 🙏🏼 and happy reading 📚",
+  "<br>",
+];
